@@ -10,6 +10,7 @@ QString groupIPV4Addr = "239.255.22.71";
 int main(int argc, char *argv[])
 {
   QCoreApplication a(argc, argv);
+  QProcess::execute("modprobe usbip-host");
   GroupListener g(groupIPV4Addr, hostPort);
 
   return a.exec();

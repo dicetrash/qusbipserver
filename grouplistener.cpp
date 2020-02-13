@@ -65,7 +65,12 @@ void GroupListener::dataRecieved()
   }
 }
 
-void GroupListener::monitorUpdate()
+void GroupListener::monitorUpdate(UdevMonitor::UpdateEvent updateEvent)
 {
-  listener.writeDatagram(USB_CHANGE, groupAddress, hostPort);
+  auto broadcast = QJsonDocument::fromVariant(QVariantMap({
+     {"message", USB_CHANGE},
+     {"action", updateEvent.action},
+     {"device", updateEvent.device}
+   })).toJson();
+  listener.writeDatagram(broadcast, groupAddress, hostPort);
 }

@@ -1,5 +1,5 @@
 [Unit]
-Description=My Service
+Description=qUsbipServer
 After=usbipd.service
 Requires=usbipd.service
 

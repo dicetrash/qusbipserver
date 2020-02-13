@@ -13,7 +13,7 @@ class GroupListener: public QObject
    GroupListener(QString groupIpv4Host, qint16 hostPort);
  public slots:
    void dataRecieved();
-   void monitorUpdate();
+   void monitorUpdate(UdevMonitor::UpdateEvent updateEvent);
  private:
    QUdpSocket listener {};
    UdevMonitor monitor {};

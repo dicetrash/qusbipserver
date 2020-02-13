@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+systemctl enable usbipd
+systemctl enable qusbipserver
+deb-systemd-invoke start usbipd
+deb-systemd-invoke start qusbipserver
