@@ -1,0 +1,30 @@
+FROM arm32v7/debian:buster
+
+RUN apt-get update
+RUN apt-get install -y \
+ build-essential \
+ libudev-dev \
+ dh-systemd \
+ pkg-config
+
+RUN apt-get update
+RUN apt-get install -y \
+ qtdeclarative5-dev \
+ qt5-default
+
+WORKDIR /opt
+
+COPY . .
+
+RUN cp builds/debian_config.h config.h
+RUN qmake
+RUN make
+RUN mkdir -p pkgdir/usr/sbin
+RUN cp -r builds/DEBIAN pkgdir/
+RUN mkdir -p pkgdir/usr/lib/systemd/system
+RUN cp builds/*.service pkgdir/usr/lib/systemd/system
+RUN cp LICENSE pkgdir/DEBIAN
+RUN mv qusbipserver pkgdir/usr/sbin/
+RUN mv pkgdir qusbipserver
+RUN dpkg-deb -b qusbipserver
+

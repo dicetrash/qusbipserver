@@ -1,0 +1,18 @@
+Package: qusbipserver
+Version: 1.0
+Section: custom
+Priority: optional
+Architecture: all
+Files: *
+Copyright: 2020 dicetrash
+License: GPL-2+
+Essential: no
+Installed-Size: 1024
+Maintainer: dicetrash
+Build-Depends:
+ build-essential
+ libudev-dev
+ qtdeclarative5-dev
+ dh-systemd
+Depends: libudev1, usbip
+Description: A server admin for attaching usb over ip between linux devices.

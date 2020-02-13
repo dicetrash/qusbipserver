@@ -4,6 +4,7 @@
 
 #include <QHostAddress>
 #include <QUdpSocket>
+#include "udevmonitor.h"
 
 class GroupListener: public QObject
 {
@@ -12,8 +13,10 @@ class GroupListener: public QObject
    GroupListener(QString groupIpv4Host, qint16 hostPort);
  public slots:
    void dataRecieved();
+   void monitorUpdate();
  private:
    QUdpSocket listener {};
+   UdevMonitor monitor {};
    QHostAddress groupAddress;
    quint16 hostPort;
 };

@@ -1,0 +1,12 @@
+[Unit]
+Description=My Service
+After=usbipd.service
+Requires=usbipd.service
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/sbin/qusbipserver
+
+[Install]
+WantedBy=multi-user.target

@@ -25,7 +25,8 @@ SOURCES += \
         ksource/usbip_common.c \
         ksource/usbip_list.c \
         ksource/utils.c \
-        main.cpp
+        main.cpp \
+        udevmonitor.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -38,10 +39,9 @@ HEADERS += \
     ksource/names.h \
     ksource/sysfs_utils.h \
     ksource/usbip_common.h \
-    ksource/utils.h
+    ksource/utils.h \
+    udevmonitor.h
 
 
 unix: CONFIG += link_pkgconfig
 unix: PKGCONFIG += libudev
-
-unix:!macx: LIBS += -lwrap
