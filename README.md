@@ -11,6 +11,15 @@ Anyone willing to help by making MRs to improve the project.
 * Platform build docker images for redhat or raspbian.
 
 ## Build and Install
+## Installing
+Go to https://github.com/dicetrash/qusbipserver/releases/tag/0.1 and download the correct package for your hardware
+
+
+```
+sudo apt-get install usbip libudev1 libqt5network5
+dpkg -i <file downloaded>
+```
+
 ### Required development libraries to build
 depending on how you want to build it
 * qmake / make
