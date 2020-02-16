@@ -1,4 +1,4 @@
-FROM arm32v7/debian:buster
+FROM debian:buster
 
 RUN apt-get update
 RUN apt-get install -y \

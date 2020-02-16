@@ -84,15 +84,13 @@ extern int usbip_use_debug ;
 	} while (0)
 
 #define dbg(fmt, args...)						\
-	do {								\
-	if (usbip_use_debug) {						\
+	do {								\					\
 		if (usbip_use_syslog) {					\
 			syslog(LOG_DEBUG, dbg_fmt(fmt), ##args);	\
 		}							\
 		if (usbip_use_stderr) {					\
 			fprintf(stderr, dbg_fmt(fmt), ##args);		\
-		}							\
-	}								\
+		}							\							\
 	} while (0)
 
 #define BUG()						\
