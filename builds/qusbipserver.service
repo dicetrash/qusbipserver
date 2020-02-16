@@ -1,6 +1,6 @@
 [Unit]
 Description=qUsbipServer
-After=usbipd.service
+After=network.target usbipd.service
 Requires=usbipd.service
 
 [Service]

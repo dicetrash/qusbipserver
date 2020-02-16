@@ -15,6 +15,7 @@ class GroupListener: public QObject
    void dataRecieved();
    void monitorUpdate(UdevMonitor::UpdateEvent updateEvent);
  private:
+   void joinMulticast();
    QUdpSocket listener {};
    UdevMonitor monitor {};
    QHostAddress groupAddress;

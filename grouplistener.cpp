@@ -9,6 +9,7 @@
 
 #include <QNetworkDatagram>
 #include <QJsonDocument>
+#include <QTimer>
 
 extern "C" {
     #include "usbip_bind.c"
@@ -18,11 +19,10 @@ extern "C" {
 GroupListener::GroupListener(QString groupIpv4Host, qint16 hostPort): QObject(nullptr), groupAddress(groupIpv4Host), hostPort(hostPort)
 {
   listener.bind(QHostAddress::AnyIPv4, hostPort, QUdpSocket::ShareAddress);
-  listener.joinMulticastGroup(groupAddress);
   connect(&listener, &QUdpSocket::readyRead, this, &GroupListener::dataRecieved);
   connect(&monitor, &UdevMonitor::update, this, &GroupListener::monitorUpdate);
-  listener.writeDatagram(IM_A_HOST, groupAddress, hostPort);
   usbip_names_init((char*)USBIDS_FILE);
+  joinMulticast();
 }
 
 void GroupListener::dataRecieved()
@@ -73,4 +73,14 @@ void GroupListener::monitorUpdate(UdevMonitor::UpdateEvent updateEvent)
      {"device", updateEvent.device}
    })).toJson();
   listener.writeDatagram(broadcast, groupAddress, hostPort);
+}
+
+void GroupListener::joinMulticast()
+{
+  bool success = listener.joinMulticastGroup(groupAddress);
+  if (!success) {
+    QTimer::singleShot(1000, [this]() { joinMulticast(); });
+    return;
+  }
+  listener.writeDatagram(IM_A_HOST, groupAddress, hostPort);
 }
