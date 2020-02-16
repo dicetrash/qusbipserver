@@ -36,8 +36,8 @@ void GroupListener::dataRecieved()
       listener.writeDatagram(dgram.makeReply(IM_A_HOST));
     }
     else if (dgram.data().contains(BIND_PORT_ADM)) {
-      char* bus = QJsonDocument::fromJson(dgram.data())["bus"].toString().toLocal8Bit().data();
-      auto bindRes = usbip_bind(bus);
+      const char* bus = QJsonDocument::fromJson(dgram.data())["bus"].toString().toStdString().c_str();
+      auto bindRes = usbip_bind((char*)bus);
       auto result = QJsonDocument::fromVariant(QVariantMap({
          {"process", "usbip-bind-ack"},
          {"recieved", bindRes}
