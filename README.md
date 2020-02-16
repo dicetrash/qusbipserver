@@ -11,6 +11,16 @@ Anyone willing to help by making MRs to improve the project.
 * Platform build docker images for redhat or raspbian.
 
 ## Build and Install
+## Installing
+Currently I have an armhf device and thus really only do armhf builds, docker containers for other builds welcomed.
+
+otherwise on your device
+```
+sudo apt-get install usbip libudev1 libqt5network5
+wget https://github.com/dicetrash/qusbipserver/releases/download/0.1/qusbipserver.deb
+dpkg -i qusbipserver.deb
+```
+
 ### Required development libraries to build
 depending on how you want to build it
 * qmake / make
