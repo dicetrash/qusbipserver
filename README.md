@@ -16,8 +16,7 @@ Go to https://github.com/dicetrash/qusbipserver/releases/tag/0.1 and download th
 
 
 ```
-sudo apt-get install usbip libudev1 libqt5network5
-dpkg -i <file downloaded>
+sudo apt install qusbipserver_<arch>.deb
 ```
 
 ### Required development libraries to build
