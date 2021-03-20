@@ -14,5 +14,7 @@ Build-Depends:
  libudev-dev
  qtdeclarative5-dev
  dh-systemd
-Depends: libudev1, usbip, libqt5network5
+Depends: libudev1,
+  usbip | linux-tools-generic,
+  libqt5network5
 Description: A server admin for attaching usb over ip between linux devices.
