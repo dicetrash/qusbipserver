@@ -12,7 +12,7 @@ Anyone willing to help by making MRs to improve the project.
 
 ## Build and Install
 ## Installing
-Go to https://github.com/dicetrash/qusbipserver/releases/tag/0.1 and download the correct package for your hardware
+Go to https://github.com/dicetrash/qusbipserver/releases/tag/0.2 and download the correct package for your hardware
 
 
 ```
